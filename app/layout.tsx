@@ -1,14 +1,14 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google"
+import { League_Spartan } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import Header from "@/components/layout/Header"
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'})
-
-const fontMono = Geist_Mono({
+const league = League_Spartan({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-league",
+  display: "swap",
 })
 
 export default function RootLayout({
@@ -20,10 +20,13 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", inter.variable)}
+      className={cn("antialiased", league.variable)}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Header />
+          <main className="pt-[72px]">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   )
