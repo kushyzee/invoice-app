@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Plus, ChevronDown } from "lucide-react"
 import InvoiceCard from "@/features/invoices/components/InvoiceCard"
 import { mockInvoices } from "@/features/invoices/data/invoice"
+import NoInvoice from "@/features/invoices/components/NoInvoice"
 
 export default function Page() {
   return (
@@ -33,11 +34,12 @@ export default function Page() {
       </div>
 
       {/* Invoice List */}
-      <div className="flex flex-col gap-4">
+      <div className="hidden flex-col gap-4">
         {mockInvoices.map((invoice) => (
           <InvoiceCard key={invoice.id} invoice={invoice} />
         ))}
       </div>
+      <NoInvoice />
     </div>
   )
 }
