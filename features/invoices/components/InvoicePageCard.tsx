@@ -45,7 +45,7 @@ export default function InvoicePageCard({ id }: { id: string }) {
           <span className="text-sm text-invoice-grey">Status</span>
           <StatusBadge status={invoice.status} />
         </div>
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="mb-6 hidden items-center gap-2 md:flex">
           {!isPaid && (
             <ModalTrigger
               buttonText="Edit"

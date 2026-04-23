@@ -11,7 +11,7 @@ export const AddressSchema = z.object({
 })
 
 export const ItemSchema = z.object({
-  id: z.string().optional(),
+  id: z.string(),
   name: z.string().min(1, "can't be empty"),
   quantity: z
     .number({ message: "can't be empty" })
