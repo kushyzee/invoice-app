@@ -21,7 +21,7 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 z-50 flex h-[72px] w-full items-center justify-between bg-sidebar md:h-[80px] lg:h-screen lg:w-[103px] lg:flex-col lg:rounded-r-3xl">
+    <header className="fixed top-0 left-0 flex h-[72px] w-full items-center justify-between bg-sidebar md:h-[80px] lg:h-screen lg:w-[103px] lg:flex-col lg:rounded-r-3xl">
       <div className="h-[72px] w-[72px] overflow-hidden rounded-r-2xl md:h-[80px] md:w-[80px] lg:h-[103px] lg:w-[103px] lg:rounded-r-3xl">
         <Logo className="h-full w-full object-cover" />
       </div>
@@ -46,6 +46,7 @@ export default function Header() {
           <Image
             src={profilePic}
             alt="Profile"
+            loading="eager"
             className="h-8 w-8 rounded-full object-cover"
           />
         </div>

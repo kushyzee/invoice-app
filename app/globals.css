@@ -48,6 +48,7 @@
   --color-invoice-dark: var(--invoice-dark);
   --color-invoice-purple: var(--invoice-purple);
   --color-invoice-purple-light: var(--invoice-purple-light);
+  --color-invoice-grey: var(--invoice-grey);
   --color-invoice-muted: var(--invoice-muted);
   --color-invoice-secondary: var(--invoice-secondary);
   --color-invoice-paid: var(--invoice-paid);
@@ -93,13 +94,14 @@
   --invoice-dark: hsl(228 29% 7%);
   --invoice-purple: hsl(252 94% 67%);
   --invoice-purple-light: hsl(254 100% 73%);
+  --invoice-grey: hsl(231 37% 63%);
   --invoice-muted: hsl(228 40% 63%);
   --invoice-secondary: hsl(231 20% 61%);
   --invoice-paid: hsl(159 65% 52%);
   --invoice-pending: hsl(34 100% 50%);
   --invoice-draft: hsl(234 20% 27%);
   --sidebar-background: hsl(231 20% 27%);
-  --sidebar-primary: hsl(231 36% 63%);
+  --sidebar-primary: hsl(231 37% 63%);
   --sidebar-accent: hsl(240 4.8% 95.9%);
   --sidebar-border: hsl(231 20% 36%);
 }

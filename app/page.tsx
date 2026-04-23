@@ -1,10 +1,18 @@
+"use client"
+
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Plus, ChevronDown } from "lucide-react"
 import InvoiceCard from "@/features/invoices/components/InvoiceCard"
 import { mockInvoices } from "@/features/invoices/data/invoice"
 import NoInvoice from "@/features/invoices/components/NoInvoice"
+import { Sheet, SheetTrigger } from "@/components/ui/sheet"
+import { InvoiceForm } from "@/features/invoices/components/InvoiceForm"
+import { useState } from "react"
 
 export default function Page() {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-16 px-6 py-8 md:py-16">
       {/* Header */}
@@ -24,19 +32,31 @@ export default function Page() {
             <ChevronDown className="h-4 w-4 text-invoice-purple" />
           </button>
 
-          <Button className="flex h-[44px] w-[90px] items-center gap-2 rounded-full py-2 pl-2 hover:bg-invoice-purple-light">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
-              <Plus className="h-2.5 w-2.5 text-invoice-purple" />
-            </div>
-            <span className="text-base2 font-bold text-white">New</span>
-          </Button>
+          <Sheet>
+            <SheetTrigger
+              onClick={() => {
+                console.log("new button is working")
+              }}
+              render={
+                <Button className="flex h-[44px] w-[90px] items-center gap-2 rounded-full py-2 pl-2 hover:bg-invoice-purple-light">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
+                    <Plus className="h-2.5 w-2.5 text-invoice-purple" />
+                  </div>
+                  <span className="text-base2 font-bold text-white">New</span>
+                </Button>
+              }
+            ></SheetTrigger>
+            <InvoiceForm />
+          </Sheet>
         </div>
       </div>
 
       {/* Invoice List */}
-      <div className="hidden flex-col gap-4">
+      <div className="flex flex-col gap-4">
         {mockInvoices.map((invoice) => (
-          <InvoiceCard key={invoice.id} invoice={invoice} />
+          <Link key={invoice.id} href={`/invoice/${invoice.id}`}>
+            <InvoiceCard invoice={invoice} />
+          </Link>
         ))}
       </div>
       <NoInvoice />

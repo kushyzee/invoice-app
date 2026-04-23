@@ -9,7 +9,7 @@ import EmailCampaign from "@/assets/svg/email-campaign.svg"
 
 export default function NoInvoice() {
   return (
-    <Empty>
+    <Empty className="hidden">
       <EmptyHeader className="gap-[42px]">
         <EmptyMedia className="w-[193px]">
           <EmailCampaign
