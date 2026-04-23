@@ -21,25 +21,25 @@ export const ItemSchema = z.object({
 
 export const FormInvoiceSchema = z.object({
   id: z.string().optional(),
-  clientName: z.string().min(1, "can't be empty"),
+  clientName: requiredString,
   clientEmail: z.email("invalid email"),
-  clientStreet: z.string().min(1, "can't be empty"),
-  clientCity: z.string().min(1, "can't be empty"),
-  clientPostCode: z.string().min(1, "can't be empty"),
-  clientCountry: z.string().min(1, "can't be empty"),
-  senderStreet: z.string().min(1, "can't be empty"),
-  senderCity: z.string().min(1, "can't be empty"),
-  senderPostCode: z.string().min(1, "can't be empty"),
-  senderCountry: z.string().min(1, "can't be empty"),
-  invoiceDate: z.string().min(1, "can't be empty"),
+  clientStreet: requiredString,
+  clientCity: requiredString,
+  clientPostCode: requiredString,
+  clientCountry: requiredString,
+  senderStreet: requiredString,
+  senderCity: requiredString,
+  senderPostCode: requiredString,
+  senderCountry: requiredString,
+  invoiceDate: requiredString,
   paymentTerms: z.union([
     z.literal(1),
     z.literal(7),
     z.literal(14),
     z.literal(30),
   ]),
-  description: z.string().min(1, "can't be empty"),
-  items: z.array(ItemSchema).min(1, "- An item must be added"),
+  description: requiredString,
+  items: z.array(ItemSchema).min(1, "An item must be added"),
 })
 
 export const InvoiceSchema = FormInvoiceSchema.extend({

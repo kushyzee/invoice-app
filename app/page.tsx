@@ -1,17 +1,30 @@
 "use client"
 
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Plus, ChevronDown } from "lucide-react"
 import InvoiceCard from "@/features/invoices/components/InvoiceCard"
-import { mockInvoices } from "@/features/invoices/data/invoice"
 import NoInvoice from "@/features/invoices/components/NoInvoice"
-import { Sheet, SheetTrigger } from "@/components/ui/sheet"
-import { InvoiceForm } from "@/features/invoices/components/InvoiceForm"
+import { useInvoices } from "@/features/invoices/context/InvoiceContext"
+import ModalTrigger from "@/features/invoices/components/ModalTrigger"
 import { useState } from "react"
+import {
+  FilterDropdown,
+  FilterStatus,
+} from "@/features/invoices/components/FilterDropdown"
 
 export default function Page() {
-  const [isOpen, setIsOpen] = useState(false)
+  const { invoices } = useInvoices()
+  console.log(invoices)
+  const [filter, setFilter] = useState<FilterStatus>("all")
+
+  const filtered =
+    filter === "all"
+      ? invoices
+      : invoices.filter((inv) => inv.status === filter)
+
+  const countLabel =
+    invoices.length === 0
+      ? "No invoices"
+      : `${filtered.length} ${filtered.length === 1 ? "invoice" : "invoices"}`
 
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-16 px-6 py-8 md:py-16">
@@ -22,44 +35,29 @@ export default function Page() {
             Invoices
           </h1>
           <p className="mt-1 text-sm2 leading-0 text-secondary md:text-base">
-            <span className="hidden md:inline">There are </span>7 invoices
+            <span className="hidden md:inline">There are </span>
+            {countLabel}
           </p>
         </div>
 
         <div className="flex items-center gap-4 md:gap-10">
-          <button className="flex items-center gap-2 text-base2 font-bold md:text-base dark:text-white">
-            <span>Filter</span>
-            <ChevronDown className="h-4 w-4 text-invoice-purple" />
-          </button>
+          <FilterDropdown value={filter} onChange={setFilter} />
 
-          <Sheet>
-            <SheetTrigger
-              onClick={() => {
-                console.log("new button is working")
-              }}
-              render={
-                <Button className="flex h-[44px] w-[90px] items-center gap-2 rounded-full py-2 pl-2 hover:bg-invoice-purple-light">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white">
-                    <Plus className="h-2.5 w-2.5 text-invoice-purple" />
-                  </div>
-                  <span className="text-base2 font-bold text-white">New</span>
-                </Button>
-              }
-            ></SheetTrigger>
-            <InvoiceForm />
-          </Sheet>
+          <ModalTrigger buttonText="New" />
         </div>
       </div>
 
-      {/* Invoice List */}
-      <div className="flex flex-col gap-4">
-        {mockInvoices.map((invoice) => (
-          <Link key={invoice.id} href={`/invoice/${invoice.id}`}>
-            <InvoiceCard invoice={invoice} />
-          </Link>
-        ))}
-      </div>
-      <NoInvoice />
+      {invoices.length === 0 ? (
+        <NoInvoice />
+      ) : (
+        <div className="flex flex-col gap-4">
+          {invoices.map((invoice) => (
+            <Link key={invoice.id} href={`/invoice/${invoice.id}`}>
+              <InvoiceCard invoice={invoice} />
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

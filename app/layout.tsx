@@ -4,6 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import Header from "@/components/layout/Header"
+import { InvoiceProvider } from "@/features/invoices/context/InvoiceContext"
 
 const league = League_Spartan({
   subsets: ["latin"],
@@ -24,8 +25,10 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
-          <Header />
-          <main className="pt-[72px]">{children}</main>
+          <InvoiceProvider>
+            <Header />
+            <main className="pt-[72px]">{children}</main>
+          </InvoiceProvider>
         </ThemeProvider>
       </body>
     </html>

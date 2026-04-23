@@ -12,7 +12,14 @@ export interface Address {
   country: string
 }
 
-export interface Invoice {
+export interface Invoice extends InvoiceFormData {
+  id: string
+  status: "paid" | "pending" | "draft"
+  total: number
+  paymentDue: string
+}
+
+export interface InvoiceFormData {
   clientName: string
   clientEmail: string
   clientStreet: string

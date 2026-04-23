@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react"
 import { Input } from "@/components/ui/input"
 import { Field, FieldLabel, FieldError } from "@/components/ui/field"
 
@@ -36,7 +35,11 @@ export default function TextSubField({
       <Input
         value={field.state.value}
         onBlur={field.handleBlur}
-        onChange={(e) => field.handleChange(e.target.value)}
+        onChange={
+          type === "text"
+            ? (e) => field.handleChange(e.target.value)
+            : (e) => field.handleChange(Number(e.target.value))
+        }
         type={type}
         aria-invalid={isInvalid}
         autoComplete="off"

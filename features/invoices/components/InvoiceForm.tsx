@@ -2,7 +2,7 @@
 "use client"
 
 import { useForm } from "@tanstack/react-form"
-import { Invoice } from "../types"
+import { InvoiceFormData } from "../types"
 import { FormInvoiceSchema } from "../schemas"
 import {
   SheetClose,
@@ -36,12 +36,16 @@ import {
 import { cn } from "@/lib/utils"
 import TextField from "./TextField"
 import TextSubField from "./TextSubField"
+import { useInvoices } from "../context/InvoiceContext"
 
 interface InvoiceFormProps {
-  invoice?: Invoice
+  invoice?: InvoiceFormData
+  invoiceId?: string
+  onClose: () => void
 }
 
-export function InvoiceForm({ invoice }: InvoiceFormProps) {
+export function InvoiceForm({ invoice, invoiceId, onClose }: InvoiceFormProps) {
+  const { createInvoice, saveDraft, updateInvoice } = useInvoices()
   const isEdit = !!invoice
 
   const form = useForm({
@@ -66,11 +70,21 @@ export function InvoiceForm({ invoice }: InvoiceFormProps) {
     },
     onSubmit: async ({ value }) => {
       console.log("Form Submitted:", value)
+      if (isEdit) {
+        updateInvoice(invoiceId!, value)
+      } else {
+        createInvoice(value)
+      }
+
+      onClose()
     },
   })
 
   const handleSaveAsDraft = () => {
     console.log("Saved as Draft:", form.state.values)
+    const value = form.state.values
+    saveDraft(value)
+    onClose()
   }
 
   return (
