@@ -38,9 +38,9 @@ export default function InvoicePageCard({ id }: { id: string }) {
   const isPending = invoice.status === "pending"
 
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       {/* Status Bar */}
-      <div className="flex items-center justify-between rounded-xl bg-card p-6 shadow-sm md:mb-5">
+      <div className="flex items-center justify-between rounded-xl bg-card p-6 shadow-sm">
         <div className="flex w-full items-center justify-between md:w-auto md:gap-4">
           <span className="text-sm text-invoice-grey">Status</span>
           <StatusBadge status={invoice.status} />
