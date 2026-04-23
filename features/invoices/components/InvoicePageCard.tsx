@@ -40,12 +40,12 @@ export default function InvoicePageCard({ id }: { id: string }) {
   return (
     <div>
       {/* Status Bar */}
-      <div className="flex items-center justify-between rounded-xl bg-card p-6 shadow-sm">
+      <div className="flex items-center justify-between rounded-xl bg-card p-6 shadow-sm md:mb-5">
         <div className="flex w-full items-center justify-between md:w-auto md:gap-4">
           <span className="text-sm text-invoice-grey">Status</span>
           <StatusBadge status={invoice.status} />
         </div>
-        <div className="mb-6 hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
           {!isPaid && (
             <ModalTrigger
               buttonText="Edit"
