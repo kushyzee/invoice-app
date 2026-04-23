@@ -27,7 +27,9 @@ export default function RootLayout({
         <ThemeProvider>
           <InvoiceProvider>
             <Header />
-            <main className="pt-[72px]">{children}</main>
+            <main className="mx-auto max-w-[688px] pt-[72px] lg:max-w-[730px]">
+              {children}
+            </main>
           </InvoiceProvider>
         </ThemeProvider>
       </body>

@@ -17,7 +17,7 @@ import {
   FieldContent,
   FieldError,
 } from "@/components/ui/field"
-import { Trash2, CalendarIcon } from "lucide-react"
+import { Trash2, CalendarIcon, ChevronLeft } from "lucide-react"
 import { formatCurrency } from "../utils/invoiceHelpers"
 import {
   Popover,
@@ -90,16 +90,20 @@ export function InvoiceForm({ invoice, invoiceId, onClose }: InvoiceFormProps) {
   return (
     <SheetContent
       side="left"
-      className="flex w-full flex-col gap-0 border-0 p-0 md:w-[80%] md:rounded-r-3xl"
+      className="flex w-full flex-col gap-0 border-0 p-0 md:w-[80%] md:max-w-[616px] md:rounded-r-3xl"
       showCloseButton={false}
     >
       <div className="flex flex-1 flex-col overflow-y-auto px-6 py-8 md:pt-14">
         <SheetHeader className="mb-10 p-0 text-left">
+          <SheetClose className="mb-6 flex cursor-pointer items-center gap-4 text-sm font-bold hover:text-invoice-grey md:hidden">
+            <ChevronLeft className="h-4 w-4 text-invoice-purple" />
+            Go back
+          </SheetClose>
           <SheetTitle className="text-2xl font-bold">
             {isEdit ? (
               <>
                 Edit <span className="text-invoice-secondary">#</span>
-                AD7768
+                {invoiceId}
               </>
             ) : (
               "New Invoice"

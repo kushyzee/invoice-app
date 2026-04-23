@@ -47,11 +47,11 @@ export default function Page() {
         </div>
       </div>
 
-      {invoices.length === 0 ? (
+      {filtered.length === 0 ? (
         <NoInvoice />
       ) : (
         <div className="flex flex-col gap-4">
-          {invoices.map((invoice) => (
+          {filtered.map((invoice) => (
             <Link key={invoice.id} href={`/invoice/${invoice.id}`}>
               <InvoiceCard invoice={invoice} />
             </Link>
