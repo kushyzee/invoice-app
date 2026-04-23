@@ -10,7 +10,8 @@ import { useState } from "react"
 import { DeleteModal } from "./DeleteModal"
 
 export default function InvoicePageCard({ id }: { id: string }) {
-  const { getInvoiceById, deleteInvoice, markAsPaid } = useInvoices()
+  const { getInvoiceById, deleteInvoice, markAsPaid, sendInvoice } =
+    useInvoices()
   const router = useRouter()
 
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -34,8 +35,13 @@ export default function InvoicePageCard({ id }: { id: string }) {
     markAsPaid(invoice!.id)
   }
 
+  function handleSend() {
+    sendInvoice(invoice!.id)
+  }
+
   const isPaid = invoice.status === "paid"
   const isPending = invoice.status === "pending"
+  const isDraft = invoice.status === "draft"
 
   return (
     <div className="flex flex-col gap-5">
@@ -60,6 +66,14 @@ export default function InvoicePageCard({ id }: { id: string }) {
           >
             Delete
           </Button>
+          {isDraft && (
+            <Button
+              className="rounded-full bg-invoice-purple px-6 font-bold hover:bg-invoice-purple-light"
+              onClick={handleSend}
+            >
+              Send
+            </Button>
+          )}
           {isPending && (
             <Button
               className="rounded-full bg-invoice-purple px-6 font-bold hover:bg-invoice-purple-light"
@@ -190,6 +204,14 @@ export default function InvoicePageCard({ id }: { id: string }) {
         >
           Delete
         </Button>
+        {isDraft && (
+          <Button
+            className="rounded-full bg-invoice-purple px-6 font-bold hover:bg-invoice-purple-light"
+            onClick={handleSend}
+          >
+            Send
+          </Button>
+        )}
         {isPending && (
           <Button
             size="lg"

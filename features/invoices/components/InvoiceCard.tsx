@@ -1,6 +1,7 @@
 import { Invoice } from "../types"
 import StatusBadge from "./StatusBadge"
 import { formatCurrency, formatDate } from "../utils/invoiceHelpers"
+import { ChevronRight } from "lucide-react"
 
 interface InvoiceCardProps {
   invoice: Invoice
@@ -17,7 +18,7 @@ export default function InvoiceCard({ invoice }: InvoiceCardProps) {
         <span className="text-sm2 text-secondary">{invoice.clientName}</span>
       </div>
 
-      <div className="flex items-center justify-between md:w-5/12 md:justify-end md:gap-8">
+      <div className="flex items-center justify-between md:w-5/12 md:justify-end md:gap-8 lg:w-3/4">
         <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-8">
           <span className="text-sm2 font-medium text-secondary">
             Due {formatDate(invoice.paymentDue)}
@@ -29,6 +30,7 @@ export default function InvoiceCard({ invoice }: InvoiceCardProps) {
         <div className="flex items-center gap-4">
           <StatusBadge status={invoice.status} />
         </div>
+        <ChevronRight className="hidden lg:block" />
       </div>
     </div>
   )
