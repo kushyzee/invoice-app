@@ -191,7 +191,7 @@ export default function InvoicePageCard({ id }: { id: string }) {
       </div>
 
       {/* Mobile Actions Bar - Fixed at bottom */}
-      <div className="shadow- fixed right-0 bottom-0 left-0 flex items-center justify-center gap-2 bg-card p-6 md:hidden">
+      <div className="shadow- fixed right-0 bottom-0 left-0 flex items-center justify-between gap-2 bg-card p-6 md:hidden">
         {!isPaid && (
           <ModalTrigger
             buttonText="Edit"
