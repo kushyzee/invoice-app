@@ -69,7 +69,6 @@ export function InvoiceForm({ invoice, invoiceId, onClose }: InvoiceFormProps) {
       items: [],
     },
     onSubmit: async ({ value }) => {
-      console.log("Form Submitted:", value)
       if (isEdit) {
         updateInvoice(invoiceId!, value)
       } else {
@@ -81,7 +80,6 @@ export function InvoiceForm({ invoice, invoiceId, onClose }: InvoiceFormProps) {
   })
 
   const handleSaveAsDraft = () => {
-    console.log("Saved as Draft:", form.state.values)
     const value = form.state.values
     saveDraft(value)
     onClose()
@@ -90,7 +88,7 @@ export function InvoiceForm({ invoice, invoiceId, onClose }: InvoiceFormProps) {
   return (
     <SheetContent
       side="left"
-      className="flex w-full flex-col gap-0 border-0 p-0 md:w-[80%] md:max-w-[616px] md:rounded-r-3xl"
+      className="flex w-full flex-col gap-0 border-0 p-0 md:w-[80%] md:max-w-[616px] md:rounded-r-3xl lg:max-w-[720px]"
       showCloseButton={false}
     >
       <div className="flex flex-1 flex-col overflow-y-auto px-6 py-8 md:pt-14">

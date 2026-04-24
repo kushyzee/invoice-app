@@ -13,7 +13,6 @@ import {
 
 export default function Page() {
   const { invoices } = useInvoices()
-  console.log(invoices)
   const [filter, setFilter] = useState<FilterStatus>("all")
 
   const filtered =

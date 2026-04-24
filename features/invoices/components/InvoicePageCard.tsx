@@ -218,8 +218,7 @@ export default function InvoicePageCard({ id }: { id: string }) {
         )}
         {isPending && (
           <Button
-            size="lg"
-            className="rounded-full bg-invoice-purple px-6 font-bold hover:bg-invoice-purple-light"
+            className="h-12 w-[149px] rounded-full bg-invoice-purple px-6 font-bold hover:bg-invoice-purple-light"
             onClick={handleMarkAsPaid}
           >
             Mark as Paid
