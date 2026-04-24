@@ -30,7 +30,7 @@ export default function InvoiceCard({ invoice }: InvoiceCardProps) {
         <div className="flex items-center gap-4">
           <StatusBadge status={invoice.status} />
         </div>
-        <ChevronRight className="hidden lg:block" />
+        <ChevronRight className="hidden text-secondary lg:block" />
       </div>
     </div>
   )

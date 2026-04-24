@@ -61,6 +61,7 @@ export default function InvoicePageCard({ id }: { id: string }) {
           )}
           <Button
             variant="destructive"
+            size="lg"
             className="rounded-full px-6 font-bold"
             onClick={() => setShowDeleteModal(true)}
           >
@@ -70,6 +71,7 @@ export default function InvoicePageCard({ id }: { id: string }) {
             <Button
               className="rounded-full bg-invoice-purple px-6 font-bold hover:bg-invoice-purple-light"
               onClick={handleSend}
+              size="lg"
             >
               Send
             </Button>
@@ -78,6 +80,7 @@ export default function InvoicePageCard({ id }: { id: string }) {
             <Button
               className="rounded-full bg-invoice-purple px-6 font-bold hover:bg-invoice-purple-light"
               onClick={handleMarkAsPaid}
+              size="lg"
             >
               Mark as Paid
             </Button>
@@ -206,6 +209,7 @@ export default function InvoicePageCard({ id }: { id: string }) {
         </Button>
         {isDraft && (
           <Button
+            size="lg"
             className="rounded-full bg-invoice-purple px-6 font-bold hover:bg-invoice-purple-light"
             onClick={handleSend}
           >

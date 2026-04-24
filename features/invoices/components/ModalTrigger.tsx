@@ -33,6 +33,7 @@ export default function ModalTrigger({
           isEdit ? (
             <Button
               variant="secondary"
+              size="lg"
               className="rounded-full bg-slate-100 px-6 font-bold text-invoice-secondary hover:bg-slate-200 dark:bg-invoice-nav dark:text-white dark:hover:bg-invoice-dark"
             >
               {buttonText}
